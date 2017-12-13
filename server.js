@@ -8,12 +8,7 @@ app.use(express.static('public'));
 
 const requestBody = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe8wZr-l9hc_lHlOUuzKeloLcEmPCsX2k&cx=015836358660699203191:ygc14bznb5q&searchType=image&num=10"
 
-/*app.get(/^\/\S+/, (req, res) => {
-  if (req.url == )
-})*/
-
 app.get("/api/imagesearch/:query", (req, res) => {
-  console.log(req.url)
   const query = "&q=" + req.params.query.replace(" ", "+");
   let offset = req.query.offset ? req.query.offset * 10 + 1 : 1;
   offset = "&start=" + offset;
@@ -59,5 +54,11 @@ app.get("/api/latest/imagesearch", (req, res) => {
   });
 });
 
+app.get("*", (req, res) => {
+  const obj = {
+    error: "Invalid request, please get more information on https://wide-drawer.glitch.me"
+  }
+  res.json(obj);
+});
 
 app.listen(port);
