@@ -2,6 +2,7 @@ const express = require('express');
 const request = require('request');
 const app = express();
 const port = process.env.PORT;
+const mongoConnect = require("./mongoConnect");
 
 app.use(express.static('public'));
 
@@ -22,7 +23,26 @@ app.get("/api/imagesearch/:query", (req, res) => {
         page_url: val.image.contextLink
       };
     });
+    mongoConnect((err, db) => {
+      const collection = db.db("freecodecamp_projects").collection("image_search");
+      collection.insert({
+        term: req.params.query,
+        when: new Date().toString()
+      });
+      db.close();
+    });
     res.json(result);
+  });
+});
+
+app.get("/api/latest/imagesearch", (req, res) => {
+  mongoConnect((err, db) => {
+    if (err) throw err;
+    const collection = db.db("freecodecamp_projects").collection("image_search");
+    collection.find().toArray((err, result) => {
+      
+    })
+    db.close();
   });
 });
 
