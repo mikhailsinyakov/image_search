@@ -12,9 +12,15 @@ const query = "&q=cat";
 const type = "&searchType=image";
 const numResults = "&num=10";
 const offset = "&start=1"
-const url = start + apikey + searchEngine + query + numResults + offset;
+const url = start + apikey + searchEngine + query + type + numResults + offset;
 request(url, (err, res, body) => {
-  console.log(body);
+  const obj = JSON.parse(body);
+  //const response = obj.items.map(val => {
+  //img_url: val.link,
+  //alt_text: val.snippet,
+  //page_url: val.image.contextLink
+//})
+  console.log(JSON.parse(body).items)
 });
 
 
