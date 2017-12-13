@@ -24,6 +24,7 @@ app.get("/api/imagesearch/:query", (req, res) => {
       };
     });
     mongoConnect((err, db) => {
+      if (err) throw err;
       const collection = db.db("freecodecamp_projects").collection("image_search");
       collection.insert({
         term: req.params.query,
@@ -40,7 +41,15 @@ app.get("/api/latest/imagesearch", (req, res) => {
     if (err) throw err;
     const collection = db.db("freecodecamp_projects").collection("image_search");
     collection.find().toArray((err, result) => {
-      
+      const json = result.reverse()
+                          .filter((val, i) => i < 10)
+                          .map(val => {
+         return {
+           term: val.term,
+           when: val.when
+         };
+      });
+      res.json(json);
     })
     db.close();
   });
