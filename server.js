@@ -20,8 +20,8 @@ const requestBody = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAe8wZr
 });*/
 
 app.get("/api/imagesearch/:query", (req, res) => {
-  console.log(req.params.query);
-  let query = req.params.query.match(//);
+  let query = req.params.query.replace(" ", "+");
+  console.log(req.query.offset)
   query = "&q=" + query;
   const param = "";
   const offset = "&start=1";
