@@ -1,6 +1,6 @@
 Image search app
 ================
-##### You can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+##### You can get the image URLs, alt text and page urls for a set of images relating to a given search string
 
 Example input:
 
@@ -10,7 +10,7 @@ Example output:
 
 *[{"img_url": "https://cdn-s3.si.com/styles/marquee_large_2x/s3/images/trump-5.jpg","alt_text": "First Golfer: Donald Trump's relationship with golf has never been ...","page_url": "http://www.golf.com/tour-news/2017/08/01/president-donald-trump-relationship-golf-more-complicated-now"}, ...]*
 
-##### You can paginate through the responses by adding a ?offset=2 parameter to the URL.
+##### You can paginate through the responses by adding a ?offset=2 parameter to the URL
 
 Example input:
 
@@ -20,7 +20,7 @@ Example output:
 
 *[{"img_url": "http://www.golfwang.com/template/images/golfwang-store-share-image.jpg","alt_text": "Golf Wang","page_url": "http://www.golfwang.com/"}, ...]*
 
-##### You can get a list of the most recently submitted search strings.
+##### You can get a list of the most recently submitted search strings
 
 Example input:
 
